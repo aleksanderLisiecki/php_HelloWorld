@@ -4,8 +4,7 @@
 		 echo 'console.log('. json_encode( $data ) .')';
 		 echo '</script>';
 	}
-	
-	
+
 	define('SITE_KEY', '6LcJWdIUAAAAAEr28fa-1qZsY9mwNmA22LzJgyHl');
 	define('SECRET_KEY', '6LcJWdIUAAAAAPiz33XGansAvptf3vlY3uxUmCRr');
 	
@@ -28,8 +27,8 @@
 		return $Return;					
 	}
 	$Return = getCaptcha($_POST['g-recaptcha-response']);
-		if(($Return -> success == true) && ($Return -> score > 0.5)){ //test captcha zaliczony
-	}else{
+	if(!(($Return -> success == true) && ($Return -> score > 0.5))){ //test captcha nie zaliczony
+
 		$evertyhing_OK = false;
 		$_SESSION['err_CAPTCHA'] = "Test CAPTCHA nie przeszedł pomyślnie. Wynik: ".$Return -> score;
 		header('Location: index.php');
