@@ -22,7 +22,7 @@
 <div class="div-login">
 <?php
 	
-	echo "<p>Login as: ".$_SESSION['mail'].' [<a href="logout.php">Sign out</a>]</p>';
+	echo "<p>Login as: ".$_SESSION['mail'].' [<a href="logout.php" title="Wyloguj się">Sign out</a>]</p>';
 
 ?>
 </div>

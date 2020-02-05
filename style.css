@@ -1,11 +1,13 @@
 body{
-    background-color: rgb(61, 113, 156);
+    background-color: rgb(11, 61, 102);
+    background-image: url("img/tlo.png");
     margin: 20px;
 }
 
 .div-login{
     position: absolute;
-    background-color: burlywood;
+    background-color: rgb(207, 144, 62);
+    background-image: url("img/tlo.png");
     border-style: solid;
     border-width: 2px;
     border-radius: 10px;
