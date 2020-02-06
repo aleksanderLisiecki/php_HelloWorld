@@ -45,7 +45,7 @@ exit();
 	<div class="div-login">
 		<form  action="login.php" method="post">
 		
-			E-mail: <br/><input type="text" name="mail" >
+			E-mail: <br/><input type="email" name="mail" >
 			<?php 
 				if(isset($_SESSION['err_mail'])){
 					echo '<div class="error">'.$_SESSION['err_mail'].'</div>';

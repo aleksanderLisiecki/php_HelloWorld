@@ -8,6 +8,10 @@
 		exit();
 	}
 	
+	require_once 'database.php';
+
+	$invPartsQuery = $db->query('SELECT * FROM inventory');
+	$invParts = $invPartsQuery->fetchAll();
 ?>
 
 <!DOCTYPE HTML>
@@ -19,13 +23,43 @@
 	<title> Magazyn Pinio.io </title>
 </head>
 <body>
-<div class="div-login">
-<?php
-	
-	echo "<p>Login as: ".$_SESSION['mail'].' [<a href="logout.php" title="Wyloguj się">Sign out</a>]</p>';
 
-?>
+<div class="container">
+	<div class="header">
+		<div class="login-text">
+			<div style="float: left">Login as: </div><div class="user"><?=$_SESSION['mail'];?></div>
+		</div>
+		<div class="login-spacer"></div>
+		<a href="logout.php" class="logout-btn">
+				Wyloguj się
+		</a>
+	</div>
+	<div class="left-bar">
+		<legend>Opcje</legend>
+		<button> Dodaj zestaw </button>
+		<button> Dodaj E100 </button>
+		<button> Dodaj AH30 </button>
+	</div>
+	<div class="main-content">
+		<legend>Magazyn</legend>
+		<table>
+			<thead>
+			<tr><td>ID</td><td>Nazwa</td><td>Ilość</td><td>Symbol</td></tr>
+			</thead>
+			<tbody>
+				<?php
+					foreach($invParts as $part){
+						echo "<tr><td>{$part['id']}</td><td>{$part['nazwa']}</td><td>{$part['ilosc']}</td><td>{$part['symbol']}</td></tr>";
+					}
+				?>
+			</tbody>
+		</table>
+	</div>
+	<div class="footer">
+	</div>
 </div>
+
+
 </body>
 </html>
 </html>

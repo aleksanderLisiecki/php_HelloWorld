@@ -1,7 +1,13 @@
 body{
     background-color: rgb(11, 61, 102);
     background-image: url("img/tlo.png");
-    margin: 20px;
+    margin: 13px;
+    font-family: 'Open-sans', sans-serif;
+}
+legend{
+    font-size: 25px;
+    font-weight: bold;
+    padding-bottom: 15px;
 }
 
 .div-login{
@@ -9,11 +15,88 @@ body{
     background-color: rgb(207, 144, 62);
     background-image: url("img/tlo.png");
     border-style: solid;
-    border-width: 2px;
+    border-width: 1px;
     border-radius: 10px;
     padding: 10px;
     width: 14em;
 }
+
+.container{
+    padding: 5px;
+    border-style: solid;
+    width: 98%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.header{
+    background-color: rgb(207, 144, 62);
+    background-image: url("img/tlo.png");
+    display: flex; 
+    width: auto;
+    /*border-style: solid;
+    border-width: 1px;
+    border-radius: 10px;*/
+    padding: 10px;
+    margin: 2px;
+}
+.login-text{
+    padding: 7px
+}
+.user{
+    padding-left: 4px; 
+    float: left;
+    font-weight: bold;
+    font-style: italic;
+}
+.login-spacer{
+    margin-left: auto;
+    margin-right: auto;
+}
+.logout-btn{
+    float: left;
+    text-decoration: none;
+    background-color: #EEEEEE;
+    color: #333333;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+
+
+
+.left-bar{
+    width: 12%;
+    height: 70%;
+    background-color: rgb(207, 144, 62);
+    background-image: url("img/tlo.png");
+    float: left;
+    padding: 10px;
+    margin: 2px;
+}
+
+
+
+.main-content{
+    background-color: rgb(207, 144, 62);
+    background-image: url("img/tlo.png");
+    float: left;
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    padding: 10px;
+    margin: 2px;
+}
+
+.footer{
+    clear: both;
+}
+
+
+
+
 
 .error{
     color: red;
