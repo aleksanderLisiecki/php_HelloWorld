@@ -43,7 +43,7 @@
 			<button> Dodaj AH30 </button>
 		</div>
 		<div class="main-content">
-			<legend>Dostępne zestawy:</legend>
+			<legend>Dodaj akcesorium:</legend>
 			
 			
 		</div>

@@ -1,6 +1,10 @@
+:root {
+    --primary-color: #50a1ff;
+    --second-color: #5bc0de;
+  }
+
 body{
-    background-color: rgb(11, 61, 102);
-    background-image: url("img/tlo.png");
+    background-color: rgb(0, 24, 42);
     margin: 13px;
     font-family: 'Open-sans', sans-serif;
 }
@@ -12,18 +16,23 @@ legend{
 
 .div-login{
     position: absolute;
-    background-color: rgb(207, 144, 62);
-    background-image: url("img/tlo.png");
+    background-color: var(--primary-color);
     border-style: solid;
     border-width: 1px;
     border-radius: 10px;
     padding: 10px;
     width: 14em;
 }
+.error{
+    color: red;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+
 
 .container{
-    padding: 5px;
-    border-style: solid;
+    padding: 2px;
     width: 98%;
     margin-left: auto;
     margin-right: auto;
@@ -31,17 +40,18 @@ legend{
 
 
 .header{
-    background-color: rgb(207, 144, 62);
-    background-image: url("img/tlo.png");
+    background-color: transparent;
+    color: var(--second-color);
     display: flex; 
     width: auto;
-    /*border-style: solid;
-    border-width: 1px;
-    border-radius: 10px;*/
-    padding: 10px;
-    margin: 2px;
+    border-bottom: 1px solid white;
+    padding: 7px;
+    margin-bottom: 10px;
 }
 .login-text{
+    display: grid;
+    grid-gap: 2px;
+    grid-template-columns: auto auto;
     padding: 7px
 }
 .user{
@@ -57,50 +67,61 @@ legend{
 .logout-btn{
     float: left;
     text-decoration: none;
-    background-color: #EEEEEE;
-    color: #333333;
-    border-style: solid;
-    border-width: 1px;
-    border-radius: 10px;
-    padding: 5px;
+    background-color: var(--second-color);
+    color: #ffffff;
+    border-radius: 15px;
+    padding: 8px 10px 1px 10px;
 }
 
 
 
+.main-grid{
+    display: grid;
+    grid-gap: 2px;
+    grid-template-columns: 14% auto 20%;
+}
 
 .left-bar{
-    width: 12%;
-    height: 70%;
-    background-color: rgb(207, 144, 62);
-    background-image: url("img/tlo.png");
-    float: left;
+    background-color: var(--primary-color);
     padding: 10px;
-    margin: 2px;
+    display: grid;
+    grid-gap: 2px;
 }
 
+.right-bar{
+    background-color: var(--primary-color);
+    padding: 10px;
+
+}
+table{
+    width: 100%;
+    border-collapse: collapse;
+}
+table, th, td{
+    padding: 2px;
+    border: 1px solid black;
+}
+th{
+    background-color: rgba(12, 12, 12, 0.295);
+}
+td{
+    font-size: 0.9em;
+}
+tr:nth-child(even){
+    background-color: #07070723;
+}
 
 
 .main-content{
-    background-color: rgb(207, 144, 62);
-    background-image: url("img/tlo.png");
-    float: left;
+    background-color: var(--primary-color);
     border-left: 1px solid #ccc;
     border-right: 1px solid #ccc;
     padding: 10px;
-    margin: 2px;
-}
 
-.footer{
-    clear: both;
 }
 
 
 
 
 
-.error{
-    color: red;
-    margin-top: 8px;
-    margin-bottom: 8px;
-}
 
