@@ -14,22 +14,36 @@ legend{
     padding-bottom: 15px;
 }
 
+input[type="number"] {
+    width:35px;
+ }
+
+h3{
+    border-top: 1px solid;
+}
+
+/*
+* === LOGIN ===
+*/
+
 .div-login{
-    position: absolute;
+    display: grid;
+    gap:5px;
     background-color: var(--primary-color);
-    border-style: solid;
-    border-width: 1px;
     border-radius: 10px;
     padding: 10px;
     width: 14em;
 }
 .error{
     color: red;
+    font-size: 0.8em;
     margin-top: 8px;
     margin-bottom: 8px;
 }
 
-
+/*
+* === END LOGIN ===
+*/
 
 .container{
     padding: 2px;
@@ -38,7 +52,9 @@ legend{
     margin-right: auto;
 }
 
-
+/*
+* === HEADER ===
+*/
 .header{
     background-color: transparent;
     color: var(--second-color);
@@ -50,7 +66,7 @@ legend{
 }
 .login-text{
     display: grid;
-    grid-gap: 2px;
+    gap: 2px;
     grid-template-columns: auto auto;
     padding: 7px
 }
@@ -74,10 +90,12 @@ legend{
 }
 
 
-
+/*
+* === MAIN ===
+*/
 .main-grid{
     display: grid;
-    grid-gap: 2px;
+    gap: 2px;
     grid-template-columns: 14% auto 20%;
 }
 
@@ -85,14 +103,21 @@ legend{
     background-color: var(--primary-color);
     padding: 10px;
     display: grid;
-    grid-gap: 2px;
+    gap: 2px;
 }
-
+.main-content{
+    background-color: var(--primary-color);
+    padding: 10px;
+}
 .right-bar{
     background-color: var(--primary-color);
     padding: 10px;
 
 }
+
+/*
+* --- Table ---
+*/
 table{
     width: 100%;
     border-collapse: collapse;
@@ -112,16 +137,13 @@ tr:nth-child(even){
 }
 
 
-.main-content{
-    background-color: var(--primary-color);
-    border-left: 1px solid #ccc;
-    border-right: 1px solid #ccc;
-    padding: 10px;
+/*
+* === ADD FORM ===
+*/
 
+.add-form{
+    display: inline-grid;
+    grid-template-columns: auto auto auto auto;
+
+    gap: 10px;
 }
-
-
-
-
-
-

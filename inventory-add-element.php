@@ -22,8 +22,8 @@
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<title> Magazyn Pinio.io </title>
 </head>
-<body>
 
+<body>
 <div class="container">
 	<div class="header">
 		<div class="login-text">
@@ -31,21 +31,49 @@
 		</div>
 		<div class="login-spacer"></div>
 		<a href="logout.php" class="logout-btn">
-				Wyloguj się
+			Wyloguj się
 		</a>
 	</div>
 	<div class="main-grid">
 		<div class="left-bar">
 			<legend>Opcje</legend>
-			<button> Dodaj akcesorium </button>
+			<button onclick="window.location.href = 'inventory-panel.php';"> Panel główny </button>
+			<button onclick="window.location.href = 'inventory-add-element.php';"> Dodaj akcesorium </button>
 			<button> Dodaj zestaw </button>
 			<button> Dodaj E100 </button>
 			<button> Dodaj AH30 </button>
 		</div>
 		<div class="main-content">
 			<legend>Dodaj akcesorium:</legend>
-			
-			
+			<div>
+				<form action="add-new-element.php" method="post">
+					<h3>Dodaj nowy element</h3>
+					<div class="add-form">	
+						<div>
+							Nazwa
+							<input type="text" name="name">
+							<?
+							if(isset($_SESSION['name_len'])){
+								echo("Nazwa <3");
+								unset($_SESSION
+							}
+							?>
+
+
+						</div>	
+						<div class="add-new-qty">
+							Ilość
+							<input type="number" name="quantity" value="1">
+						</div>
+						<div>
+							Symbol
+							<input type="text" name="symbol">
+						</div>
+					</div>
+					<input type="hidden" name="place" value="inventory-add-element.php">
+					<button>Dodaj</button>
+				</form>
+			</div>
 		</div>
 		<div class="right-bar">
 			<legend>Magazyn</legend>
@@ -66,8 +94,5 @@
 	<div class="footer">
 	</div>
 </div>
-
-
 </body>
-</html>
 </html>
