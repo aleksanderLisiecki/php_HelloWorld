@@ -1,5 +1,16 @@
+<!––
+***
+* adding elem. to inventory 
+***
+-->
 <?php
 
+	function clog( $data ){
+		echo '<script>';
+		echo 'console.log('. json_encode( $data ) .')';
+		echo '</script>';
+	}
+	clog("*** CONSOLE LOGS AVAILABLE ***");
 	session_start();
 	
 	if(!isset($_SESSION['log-in']))
@@ -45,21 +56,24 @@
 		</div>
 		<div class="main-content">
 			<legend>Dodaj akcesorium:</legend>
-			<div>
+			<div class="add-current-section">
+				<form action="add-current-element.php" method="post">
+					<button>Dodaj</button>
+				</form>
+			</div>
+			<div class="add-new-section">
 				<form action="add-new-element.php" method="post">
 					<h3>Dodaj nowy element</h3>
+					<?php
+						if(isset($_SESSION['name_len'])){
+							echo('<div class="error">Nazwa musi posiadać co najmniej 3 znaki</div>');
+							unset($_SESSION['name_len']);
+						}
+					?>
 					<div class="add-form">	
 						<div>
 							Nazwa
 							<input type="text" name="name">
-							<?
-							if(isset($_SESSION['name_len'])){
-								echo("Nazwa <3");
-								unset($_SESSION
-							}
-							?>
-
-
 						</div>	
 						<div class="add-new-qty">
 							Ilość
