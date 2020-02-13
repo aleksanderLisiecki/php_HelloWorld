@@ -13,9 +13,9 @@ legend{
     font-weight: bold;
 }
 
-input[type="number"] {
-    width:35px;
- }
+input[type="number"]{
+    width:50px;
+}
 
 h3{
     border-bottom: 1px solid;
@@ -110,6 +110,7 @@ h3{
 .add-new-section{
     padding-top: 15px;
 }
+
 .right-bar{
     background-color: var(--primary-color);
     padding: 10px;

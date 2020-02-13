@@ -1,4 +1,4 @@
-<?php
+ <?php
 	function clog( $data ){
 		 echo '<script>';
 		 echo 'console.log('. json_encode( $data ) .')';
@@ -14,20 +14,19 @@
 		exit();
 	}
 
-	if(strlen($_POST['name'])<3){
-		$_SESSION['name_len'] = true;
-		header("Location: {$_POST['place']}");
-		exit();
-	}
+	$db = require_once 'database.php';
 
-	require_once 'database.php';
+	$invPartsQuery = $db->prepare("SELECT ilosc FROM inventory WHERE nazwa=? ");
+	$invPartsQuery->execute([$_POST['name-curr']]);
+	
+	$partQty = $invPartsQuery->fetch();
+	
+	$partQty = $partQty['ilosc'];
 
-	$query = $db->prepare('INSERT INTO inventory (nazwa, ilosc, symbol) VALUES (:namee, :quantity, :symbol)');
-	$query->bindValue(':namee', $_POST['name'], PDO::PARAM_STR);
-	$query->bindValue(':quantity', intval($_POST['quantity']), PDO::PARAM_INT);
-	$query->bindValue(':symbol', $_POST['symbol'], PDO::PARAM_STR);
-	$query->execute();
+	$partQty += intval($_POST['quantity-curr']);
 
+	$query = $db->prepare('UPDATE `inventory` SET `ilosc` = :quantity WHERE `inventory`.`nazwa` = :namee');
+	$query->execute([':namee' => $_POST['name-curr'], ':quantity' => intval($partQty)]);
 
 	header("Location: {$_POST['place']}");
 ?>

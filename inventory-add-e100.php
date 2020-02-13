@@ -12,6 +12,17 @@
 	}
 	clog("*** CONSOLE LOGS AVAILABLE ***");
 
+
+	function submit( $i ){
+		if($i){
+			return(true);
+	   	}
+	   	else{
+		   alert("Please check value of VAR");
+		   return(false);
+	   	}
+	}
+
 	session_start();
 	
 	if(!isset($_SESSION['log-in']))

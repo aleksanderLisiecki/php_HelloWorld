@@ -8,7 +8,7 @@
 		exit();
 	}
 	
-	require_once 'database.php';
+	$db = require_once 'database.php';
 
 	$invPartsQuery = $db->query('SELECT * FROM inventory');
 	$invParts = $invPartsQuery->fetchAll();

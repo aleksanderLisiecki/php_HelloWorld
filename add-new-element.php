@@ -14,18 +14,19 @@
 		exit();
 	}
 
-	if(strlen($_POST['name'])<3){
+	//warunek ilosci znakow
+	if(strlen($_POST['name-new'])<3){
 		$_SESSION['name_len'] = true;
 		header("Location: {$_POST['place']}");
 		exit();
 	}
 
-	require_once 'database.php';
+	$db = require_once 'database.php';
 
 	$query = $db->prepare('INSERT INTO inventory (nazwa, ilosc, symbol) VALUES (:namee, :quantity, :symbol)');
-	$query->bindValue(':namee', $_POST['name'], PDO::PARAM_STR);
-	$query->bindValue(':quantity', intval($_POST['quantity']), PDO::PARAM_INT);
-	$query->bindValue(':symbol', $_POST['symbol'], PDO::PARAM_STR);
+	$query->bindValue(':namee', $_POST['name-new'], PDO::PARAM_STR);
+	$query->bindValue(':quantity', intval($_POST['quantity-new']), PDO::PARAM_INT);
+	$query->bindValue(':symbol', $_POST['symbol-new'], PDO::PARAM_STR);
 	$query->execute();
 
 
