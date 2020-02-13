@@ -56,11 +56,39 @@
 		</div>
 		<div class="main-content">
 			<legend>Dodaj akcesorium:</legend>
+<!––
+***
+* adding existing elem. to inventory 
+***
+-->
 			<div class="add-current-section">
 				<form action="add-current-element.php" method="post">
+					<h3>Dodaj istniejący element</h3>
+					<div class="add-form">	
+						<div>
+							<label for="elem-curr-select">Element</label>
+							<select id="elem-curr-select">
+								<?php
+									foreach($invParts as $part){
+										echo "<option>{$part['nazwa']}</option>";
+									}
+								?>
+							</select>
+						</div>	
+						<div class="add-new-qty">
+							<label for="elem-curr-qty">Ilość</label>
+							<input id="elem-curr-qty" type="number" name="quantity" value="1">
+						</div>
+					</div>
+					<input type="hidden" name="place" value="inventory-add-element.php">
 					<button>Dodaj</button>
 				</form>
 			</div>
+<!––
+***
+* adding existing elem. to inventory 
+***
+-->
 			<div class="add-new-section">
 				<form action="add-new-element.php" method="post">
 					<h3>Dodaj nowy element</h3>
@@ -72,16 +100,16 @@
 					?>
 					<div class="add-form">	
 						<div>
-							Nazwa
-							<input type="text" name="name">
+							<label for="elem-new-name">Nazwa</label>
+							<input id="elem-new-name" type="text" name="name">
 						</div>	
 						<div class="add-new-qty">
-							Ilość
-							<input type="number" name="quantity" value="1">
+							<label for="elem-new-qty">Ilość</label>
+							<input id="elem-new-qty" type="number" name="quantity" value="1">
 						</div>
 						<div>
-							Symbol
-							<input type="text" name="symbol">
+							<label for="elem-new-symbol">Symbol</label>
+							<input id="elem-new-symbol" type="text" name="symbol">
 						</div>
 					</div>
 					<input type="hidden" name="place" value="inventory-add-element.php">
