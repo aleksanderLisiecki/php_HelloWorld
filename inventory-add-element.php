@@ -50,13 +50,13 @@
 		<div class="left-bar">
 			<legend>Opcje</legend>
 			<button onclick="window.location.href = 'inventory-panel.php';"> Panel główny </button>
-			<button onclick="window.location.href = 'inventory-add-element.php';"> Dodaj akcesorium </button>
+			<button onclick="window.location.href = '#';"> Dodaj akcesorium </button>
 			<button> Dodaj zestaw </button>
 			<button onclick="window.location.href = 'inventory-add-e100.php';"> Dodaj E100 </button>
 			<button> Dodaj AH30 </button>
 		</div>
 		<div class="main-content">
-			<legend>Dodaj akcesorium:</legend>
+			<legend class="main-content-legend">Dodaj akcesorium:</legend>
 <!––
 ***
 * adding existing elem. to inventory 

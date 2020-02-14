@@ -37,10 +37,10 @@
 	<div class="main-grid">
 		<div class="left-bar">
 			<legend>Opcje</legend>
-			<button onclick="window.location.href = 'inventory-panel.php';"> Panel główny </button>
+			<button onclick="window.location.href = '#';"> Panel główny </button>
 			<button onclick="window.location.href = 'inventory-add-element.php';"> Dodaj akcesorium </button>
 			<button> Dodaj zestaw </button>
-			<button> Dodaj E100 </button>
+			<button onclick="window.location.href = 'inventory-add-e100.php';"> Dodaj E100 </button>
 			<button> Dodaj AH30 </button>
 		</div>
 		<div class="main-content">

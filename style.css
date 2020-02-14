@@ -107,10 +107,6 @@ h3{
     background-color: var(--primary-color);
     padding: 10px;
 }
-.add-new-section{
-    padding-top: 15px;
-}
-
 .right-bar{
     background-color: var(--primary-color);
     padding: 10px;
@@ -145,6 +141,20 @@ tr:nth-child(even){
 .add-form{
     display: inline-grid;
     grid-template-columns: auto auto auto auto;
-
     gap: 10px;
 }
+.add-new-section{
+    padding-top: 15px;
+}
+    
+/*
+* === E100 FORM ===
+*/
+
+.e100-main-content{
+    width: 99%;
+    display: grid;
+    gap: 6px;
+    grid-template-columns: 80% 20%;
+}
+
