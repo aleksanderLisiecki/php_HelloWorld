@@ -1,10 +1,4 @@
  <?php
-	function clog( $data ){
-		 echo '<script>';
-		 echo 'console.log('. json_encode( $data ) .')';
-		 echo '</script>';
-	}
-
 	session_start();	#otwiera sesje (zmienne)
 	
 	//formulaz wysłany?

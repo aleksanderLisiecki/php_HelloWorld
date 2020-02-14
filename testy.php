@@ -9,39 +9,18 @@ function clog( $data ){
 }
 
 
-
-$(document).ready(function(){
-    $("#input").keypress(function () {
-
-        $(this).val('['+$(this).val().replace(/\[|\]/g, ''));
-        var len=this.value.length - 1;
-        x = this.value.match(/\./g)
-        if(x) len -= x.length;
-        if(((len % 2) == 0) && len < this.maxLength-3 && len > 1){
-            $(this).val($(this).val() + '.');
-            }
-    });
-
-    $("#input").keyup(function () {
-
-        this.value = this.value.toUpperCase();
-
-        $(this).val($(this).val().replace(/\]/g, ''));
-        $(this).val($(this).val() + "]");
-        var pos = $(this).val().length - 1;
-        this.setSelectionRange(pos, pos);
-    });
-});
-
-
-
-
-
 </script>
 </head>
 <body>
-<div>
-    <input id = "input" maxlength = 9>
-</div>
+
+
+<?php
+$a = "[xx.xx..4]";
+var_dump($a,
+preg_match('/\A\[[0-9A-Za-z]{2}\.[0-9A-Za-z]{2}\.[0-9A-Za-z]{2}\]$/', $a, $matches)
+);
+?>
+
+
 </body>
 </html>

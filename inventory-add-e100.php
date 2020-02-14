@@ -12,7 +12,6 @@
 	}
 	clog("*** CLOG AVAILABLE ***");
 
-
 	function submit( $i ){
 		if($i){
 			return(true);
@@ -100,8 +99,15 @@
 				<div class="e100-add">
 					<form action="add-e100.php" method="post" onsubmit="return confirm('Na pewno chcesz dodać element?');">
 						<h3>Dodaj E100:</h3>
+						<?php
+						if(isset($_SESSION['invalid-address'])){
+							echo('<div class="error">Nieprawidłowy adres</div>');
+							unset($_SESSION['invalid-address']);
+						}
+						?>
 						<label for="address-input">Adres dodawanego E100</label>
-						<input id = "address-input" maxlength = 9 autocomplete=off title="Błąd: podczas usuwania znaków należy usunąć także kropki" required>
+						<input name="address" id="address-input" maxlength=9 autocomplete=off title="Błąd: podczas usuwania znaków należy usunąć także kropki" required>
+						<input type="hidden" name="place" value="inventory-add-e100.php">
 						<button>Dodaj</button>
 					</form>
 				</div>
