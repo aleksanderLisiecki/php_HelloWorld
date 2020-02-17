@@ -148,7 +148,7 @@ tr:nth-child(even){
 }
     
 /*
-* === E100 FORM ===
+* === E100 (AH30) FORM ===
 */
 
 .e100-main-content{
@@ -166,6 +166,28 @@ tr:nth-child(even){
     grid-column: 2;
     grid-row: 1 / last-line;
 }
+/*
 #availibility-select{
     display: none;
+}
+*/
+
+/*
+* === SET FORM ===
+*/
+
+#kit-form legend {
+    padding-bottom: 10px;
+}
+#kit-form label {
+    font-weight: bold;
+} 
+#kit-form div {
+    padding: 5px;
+    border-bottom: 1px solid;
+}
+
+.kit-form-class{
+    display: grid;
+    grid-template-columns: 10% 15%;
 }

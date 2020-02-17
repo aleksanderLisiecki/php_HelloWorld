@@ -1,3 +1,9 @@
+<!––
+***
+* main panel witch kits view
+***
+-->
+
 <?php
 
 	session_start();
@@ -9,9 +15,6 @@
 	}
 	
 	$db = require_once 'database.php';
-
-	$invPartsQuery = $db->query('SELECT * FROM inventory');
-	$invParts = $invPartsQuery->fetchAll();
 ?>
 
 <!DOCTYPE HTML>
@@ -39,7 +42,7 @@
 			<legend>Opcje</legend>
 			<button onclick="window.location.href = '#';"> Panel główny </button>
 			<button onclick="window.location.href = 'inventory-add-element.php';"> Dodaj akcesorium </button>
-			<button> Dodaj zestaw </button>
+			<button onclick="window.location.href = 'inventory-add-set.php';"> Dodaj zestaw </button>
 			<button onclick="window.location.href = 'inventory-add-e100.php';"> Dodaj E100 </button>
 			<button onclick="window.location.href = 'inventory-add-ah30.php';"> Dodaj AH30 </button>
 		</div>
@@ -49,19 +52,9 @@
 			
 		</div>
 		<div class="right-bar">
-			<legend>Magazyn</legend>
-			<table>
-				<thead>
-				<tr><th>ID</th><th>Nazwa</th><th>Ilość</th><th>Symbol</th></tr>
-				</thead>
-				<tbody>
-					<?php
-						foreach($invParts as $part){
-							echo "<tr><td>{$part['id']}</td><td>{$part['nazwa']}</td><td>{$part['ilosc']}</td><td>{$part['symbol']}</td></tr>";
-						}
-					?>
-				</tbody>
-			</table>
+			<?php
+			require 'html-magazyn.php';
+			?>
 		</div>	
 	</div>
 	<div class="footer">

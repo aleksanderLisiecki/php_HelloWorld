@@ -19,7 +19,6 @@
 
 	$e100Query = $db->query('SELECT * FROM ah30');
 	$e100 = $e100Query->fetchAll();
-
 ?>
 
 <!DOCTYPE HTML>
@@ -89,7 +88,7 @@
 			<legend>Opcje</legend>
 			<button onclick="window.location.href = 'inventory-panel.php';"> Panel główny </button>
 			<button onclick="window.location.href = 'inventory-add-element.php';"> Dodaj akcesorium </button>
-			<button> Dodaj zestaw </button>
+			<button onclick="window.location.href = 'inventory-add-set.php';"> Dodaj zestaw </button>
 			<button onclick="window.location.href = 'inventory-add-e100.php';"> Dodaj E100 </button>
 			<button onclick="window.location.href = '#';"> Dodaj AH30 </button>
 		</div>
@@ -97,6 +96,11 @@
 			<legend>AH30:</legend>
 
 			<div class="e100-main-content">
+<!––
+***
+* adding new e100 to DB
+***
+-->
 				<div class="e100-add">
 					<form action="add-ah30.php" method="post" onsubmit="return confirm('Na pewno chcesz dodać element?');">
 						<h3>Dodaj AH30:</h3>
@@ -118,6 +122,11 @@
 						<button>Dodaj</button>
 					</form>
 				</div>
+<!––
+***
+* changing existing e100
+***
+-->
 				<div class="e100-available">
 					<form action="change-ah30.php" method="post">
 						<h3>Zmień dostępność:</h3>
@@ -157,27 +166,9 @@
 			</div>	
 		</div>
 		<div class="right-bar">
-			<legend>Magazyn</legend>
-			<table>
-				<thead>
-				<tr><th>ID</th><th>Nazwa</th><th>Ilość</th><th>Symbol</th></tr>
-				</thead>
-				<tbody>
-					<?php
-						/***
-						* setting quantity of e100 and ah30
-						***/
-						require_once 'set-e100-and-ah30-qty.php';
-
-						$invPartsQuery = $db->query('SELECT * FROM inventory');
-						$invParts = $invPartsQuery->fetchAll();
-
-						foreach($invParts as $part){
-							echo "<tr><td>{$part['id']}</td><td>{$part['nazwa']}</td><td>{$part['ilosc']}</td><td>{$part['symbol']}</td></tr>";
-						}
-					?>
-				</tbody>
-			</table>
+			<?php
+			require 'html-magazyn.php';
+			?>
 		</div>	
 	</div>
 	<div class="footer">
