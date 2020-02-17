@@ -1,7 +1,9 @@
 <!––
 ***
-* adding E100 to DB
-* and changing availibility E100 in DB
+* adding and changing availibility of AH30, 
+* page is directly copy of adding E100 (css class name is for the e100 too)
+* witch change in fetching DB data in PHP section
+* and F/E tags 
 ***
 -->
 <?php
@@ -15,10 +17,7 @@
 	
 	$db = require_once 'database.php';
 
-	$invPartsQuery = $db->query('SELECT * FROM inventory');
-	$invParts = $invPartsQuery->fetchAll();
-
-	$e100Query = $db->query('SELECT * FROM e100');
+	$e100Query = $db->query('SELECT * FROM ah30');
 	$e100 = $e100Query->fetchAll();
 
 ?>
@@ -91,19 +90,19 @@
 			<button onclick="window.location.href = 'inventory-panel.php';"> Panel główny </button>
 			<button onclick="window.location.href = 'inventory-add-element.php';"> Dodaj akcesorium </button>
 			<button> Dodaj zestaw </button>
-			<button onclick="window.location.href = '#';"> Dodaj E100 </button>
-			<button onclick="window.location.href = 'inventory-add-ah30.php';"> Dodaj AH30 </button>
+			<button onclick="window.location.href = 'inventory-add-e100.php';"> Dodaj E100 </button>
+			<button onclick="window.location.href = '#';"> Dodaj AH30 </button>
 		</div>
 		<div class="main-content">
-			<legend>E100:</legend>
+			<legend>AH30:</legend>
 
 			<div class="e100-main-content">
 				<div class="e100-add">
-					<form action="add-e100.php" method="post" onsubmit="return confirm('Na pewno chcesz dodać element?');">
-						<h3>Dodaj E100:</h3>
+					<form action="add-ah30.php" method="post" onsubmit="return confirm('Na pewno chcesz dodać element?');">
+						<h3>Dodaj AH30:</h3>
 						<?php
 						if(isset($_SESSION['invalid-address'])){
-							echo('<div class="error">Nieprawidłowy adres (format: \"[XX.XX.XX]\")</div>');
+							echo('<div class="error">Nieprawidłowy adres (format: "[XX.XX.XX]")</div>');
 							unset($_SESSION['invalid-address']);
 						}
 						if(isset($_SESSION['existing-address'])){
@@ -113,16 +112,16 @@
 
 
 						?>
-						<label for="address-input">Adres dodawanego E100</label>
+						<label for="address-input">Adres dodawanego AH30</label>
 						<input name="address" id="address-input" maxlength=9 autocomplete=off title="Występujący błąd: podczas usuwania znaków należy usunąć także kropki" required>
-						<input type="hidden" name="place" value="inventory-add-e100.php">
+						<input type="hidden" name="place" value="inventory-add-ah30.php">
 						<button>Dodaj</button>
 					</form>
 				</div>
 				<div class="e100-available">
-					<form action="change-e100.php" method="post">
+					<form action="change-ah30.php" method="post">
 						<h3>Zmień dostępność:</h3>
-						<label for="address-select">Wybór E100</label>
+						<label for="address-select">Wybór AH30</label>
 						<select id="address-select" name="address-curr" required>
 							<option disabled selected value> -- wybierz adres -- </option>
 							<?php
@@ -136,12 +135,12 @@
 							<option value='0'> Niedostępny </option>
 							<option value='1'> Dostępny </option>		
 						</select>
-						<input type="hidden" name="place" value="inventory-add-e100.php">
+						<input type="hidden" name="place" value="inventory-add-ah30.php">
 						<button>Aktualizuj</button>
 					</form>
 				</div>
 				<div class="e100-inventory">
-					<h3>Stan E100:</h3>	
+					<h3>Stan AH30:</h3>	
 						<table>
 							<thead>
 							<tr><th>ID</th><th>Adres</th><th>Dostępność</th></tr>
@@ -165,6 +164,14 @@
 				</thead>
 				<tbody>
 					<?php
+						/***
+						* setting quantity of e100 and ah30
+						***/
+						require_once 'set-e100-and-ah30-qty.php';
+
+						$invPartsQuery = $db->query('SELECT * FROM inventory');
+						$invParts = $invPartsQuery->fetchAll();
+
 						foreach($invParts as $part){
 							echo "<tr><td>{$part['id']}</td><td>{$part['nazwa']}</td><td>{$part['ilosc']}</td><td>{$part['symbol']}</td></tr>";
 						}

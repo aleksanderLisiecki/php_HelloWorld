@@ -53,7 +53,7 @@
 			<button onclick="window.location.href = '#';"> Dodaj akcesorium </button>
 			<button> Dodaj zestaw </button>
 			<button onclick="window.location.href = 'inventory-add-e100.php';"> Dodaj E100 </button>
-			<button> Dodaj AH30 </button>
+			<button onclick="window.location.href = 'inventory-add-ah30.php';"> Dodaj AH30 </button>
 		</div>
 		<div class="main-content">
 			<legend class="main-content-legend">Dodaj akcesorium:</legend>

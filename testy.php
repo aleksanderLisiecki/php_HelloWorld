@@ -1,10 +1,14 @@
 <?php
     $db = require_once 'database.php';
 
+$e100 ="E100";
 
 
-	$e100Query = $db->query('SELECT * FROM e100');
-    $e100 = $e100Query->fetchAll();
+    var_dump(strtolower($e100));
+
+
+
+    exit();
 ?>
 
 <!DOCTYPE html>
