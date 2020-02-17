@@ -16,8 +16,16 @@
 
 	$db = require_once 'database.php';
 
-	$query = $db->prepare('INSERT INTO e100 (adres) VALUES (?)');
+	$query = $db->prepare('SELECT * FROM e100 WHERE adres = ?');
 	$query->execute([$_POST['address']]);
 
+	$e100 = $query->fetchColumn();
+	if(!$e100){
+		$query = $db->prepare('INSERT INTO e100 (adres, available) VALUES (?,?)');
+		$query->execute([$_POST['address'], TRUE]);
+	}
+	else{
+		$_SESSION['existing-address'] = true;
+	}
 	header("Location: {$_POST['place']}");
 ?>

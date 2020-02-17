@@ -37,6 +37,7 @@
 
 	$e100Query = $db->query('SELECT * FROM e100');
 	$e100 = $e100Query->fetchAll();
+
 ?>
 
 <!DOCTYPE HTML>
@@ -49,26 +50,44 @@
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<script>
+	//*** funkcje templatki wypisywania adresu ***/
 	$(document).ready(function(){
-    $("#address-input").keypress(function () {
-        $(this).val('['+$(this).val().replace(/\[|\]/g, ''));
-        var len=this.value.length - 1;
-        x = this.value.match(/\./g)
-        if(x) len -= x.length;
-        if(((len % 2) == 0) && len < this.maxLength-3 && len > 1){
-            $(this).val($(this).val() + '.');
-            }
+		$("#address-input").keypress(function () {
+			$(this).val('['+$(this).val().replace(/\[|\]/g, ''));
+			var len=this.value.length - 1;
+			x = this.value.match(/\./g)
+			if(x) len -= x.length;
+			if(((len % 2) == 0) && len < this.maxLength-3 && len > 1){
+				$(this).val($(this).val() + '.');
+				}
+		});
+		$("#address-input").keyup(function () {
+			this.value = this.value.toUpperCase();
 
-		
-    });
-    $("#address-input").keyup(function () {
-        this.value = this.value.toUpperCase();
+			$(this).val(($(this).val().replace(/\]/g, '')) + "]");
+			var pos = $(this).val().length - 1;
+			this.setSelectionRange(pos, pos);
+		});
 
-        $(this).val(($(this).val().replace(/\]/g, '')) + "]");
-        var pos = $(this).val().length - 1;
-        this.setSelectionRange(pos, pos);
-    });
-});
+
+
+		//*** funkcja opcji select  ***/
+		$(function() {
+		var select1 = $("#address-select");
+		var select2 = $("#availibility-select");
+
+		var a= <?php echo json_encode($e100); ?>; 
+
+		select1.on('change', function(event) {
+			for(var i=0; i<a.length; i++){
+				if(a[i]['adres'] === select1.val()){
+					select2.val(a[i]['available']);
+					select2.show();
+				};
+			}
+		});
+		});
+	});
 	</script>
 </head>
 
@@ -104,6 +123,12 @@
 							echo('<div class="error">Nieprawidłowy adres</div>');
 							unset($_SESSION['invalid-address']);
 						}
+						if(isset($_SESSION['existing-address'])){
+							echo('<div class="error">Adres już istnieje w bazie</div>');
+							unset($_SESSION['existing-address']);
+						}
+
+
 						?>
 						<label for="address-input">Adres dodawanego E100</label>
 						<input name="address" id="address-input" maxlength=9 autocomplete=off title="Błąd: podczas usuwania znaków należy usunąć także kropki" required>
@@ -111,16 +136,37 @@
 						<button>Dodaj</button>
 					</form>
 				</div>
+				<div class="e100-available">
+					<form action="change-e100.php" method="post">
+						<h3>Zmień dostępność:</h3>
+						<label for="address-select">Wybór E100</label>
+						<select id="address-select" name="address-curr" required>
+							<option disabled selected value> -- wybierz adres -- </option>
+							<?php
+								foreach($e100 as $part){
+									echo "<option>{$part['adres']}</option>";
+								}
+							?>
+						</select>
+						<select id='availibility-select' name='availibility'>
+							<option disabled selected value> <- wybierz adres</option>
+							<option value='0'> Niedostępny </option>
+							<option value='1'> Dostępny </option>		
+						</select>
+						<input type="hidden" name="place" value="inventory-add-e100.php">
+						<button>Aktualizuj</button>
+					</form>
+				</div>
 				<div class="e100-inventory">
 					<h3>Stan E100:</h3>	
 						<table>
 							<thead>
-							<tr><th>ID</th><th>Adres</th></tr>
+							<tr><th>ID</th><th>Adres</th><th>Dostępność</th></tr>
 							</thead>
 							<tbody>
 								<?php
 									foreach($e100 as $part){
-										echo "<tr><td>{$part['id']}</td><td>{$part['adres']}</td></tr>";
+										echo "<tr><td>{$part['id']}</td><td>{$part['adres']}</td><td>{$part['available']}</td></tr>";
 									}
 								?>
 							</tbody>

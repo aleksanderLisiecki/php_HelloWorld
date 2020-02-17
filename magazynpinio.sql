@@ -103,7 +103,7 @@ CREATE TABLE `logins` (
 
 INSERT INTO `logins` (`id`, `mail`, `password`, `timestamp`) VALUES
 (1, 'al@pinio.io', '$2y$10$cNYxv5mncnVabh/n.6rz8uFlEgfUmw5Ln.ytzlLcEoSJ9nnCrd7du', '2020-02-05 13:13:12'),
-(3, 'mail@mail.pl', '$2y$10$5FGZ1ius0Wq327bMGnPYoen5oyuKb8JvDjVZ89uoNtvS5hzTRBYse', '2020-02-05 13:13:12');
+(2, 'mail@mail.pl', '$2y$10$5FGZ1ius0Wq327bMGnPYoen5oyuKb8JvDjVZ89uoNtvS5hzTRBYse', '2020-02-05 13:13:12');
 
 --
 -- Indeksy dla zrzutów tabel
