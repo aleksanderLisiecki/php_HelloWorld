@@ -1,26 +1,53 @@
 :root {
     --primary-color: #50a1ff;
     --second-color: #5bc0de;
+    --back-color: rgb(0, 25, 44);
   }
 
 body{
-    background-color: rgb(0, 24, 42);
-    margin: 13px;
+    background-color: var(--back-color);
     font-family: 'Open-sans', sans-serif;
 }
 legend{
     font-size: 25px;
     font-weight: bold;
-    padding-bottom: 15px;
 }
 
-input[type="number"] {
-    width:35px;
- }
+input[type="number"]{
+    width:50px;
+}
 
 h3{
-    border-top: 1px solid;
+    border-bottom: 1px solid;
 }
+
+/*
+* === SCROLLBAR ===
+*/
+
+/* width */
+::-webkit-scrollbar {
+    width: 5px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px rgb(100, 100, 100); 
+    border-radius: 5px;
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: var(--back-color); 
+    border-radius: 10px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: black; 
+  }
+
+
 
 /*
 * === LOGIN ===
@@ -39,6 +66,9 @@ h3{
     font-size: 0.8em;
     margin-top: 8px;
     margin-bottom: 8px;
+}
+.info{
+    font-size: smaller;
 }
 
 /*
@@ -95,14 +125,14 @@ h3{
 */
 .main-grid{
     display: grid;
-    gap: 2px;
+    gap: 6px;
     grid-template-columns: 14% auto 20%;
 }
-
 .left-bar{
     background-color: var(--primary-color);
     padding: 10px;
     display: grid;
+    align-content: start;
     gap: 2px;
 }
 .main-content{
@@ -110,9 +140,16 @@ h3{
     padding: 10px;
 }
 .right-bar{
+    display: grid;
+    grid-gap: 5px;
+    min-width: 235px;
     background-color: var(--primary-color);
     padding: 10px;
+}
 
+.right-bar div{
+    max-height: 200px;
+    overflow: auto;
 }
 
 /*
@@ -121,6 +158,7 @@ h3{
 table{
     width: 100%;
     border-collapse: collapse;
+    margin-bottom: 10px;
 }
 table, th, td{
     padding: 2px;
@@ -144,6 +182,64 @@ tr:nth-child(even){
 .add-form{
     display: inline-grid;
     grid-template-columns: auto auto auto auto;
-
     gap: 10px;
+}
+.add-new-section{
+    padding-top: 15px;
+}
+    
+/*
+* === E100 (AH30) FORM ===
+*/
+
+.e100-main-content{
+    width: 99%;
+    display: grid;
+    gap: 6px;
+    grid-template-columns: 75% 25%;
+    grid-template-rows: auto auto;
+}
+.e100-available{
+    grid-column: 1;
+    grid-row: 2;
+}
+.e100-inventory{
+    grid-column: 2;
+    grid-row: 1 / last-line;
+}
+
+#availibility-select{
+    display: none;
+}
+
+
+/*
+* === SET FORM ===
+*/
+
+#kit-form legend {
+    padding-bottom: 10px;
+}
+#kit-form label {
+    font-weight: bold;
+} 
+#kit-form div {
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid;
+}
+
+.kit-form-class{
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-items: stretch;
+}
+.kit-form-add-button{
+    margin:10px;
+    padding:5px;
+    width: 80px;
+    margin-left: auto;
+    margin-right: auto;
+    grid-column: 2;
 }

@@ -1,3 +1,9 @@
+<!––
+***
+* main panel witch kits view
+***
+-->
+
 <?php
 
 	session_start();
@@ -8,10 +14,10 @@
 		exit();
 	}
 	
-	require_once 'database.php';
+	$db = require_once 'database.php';
 
-	$invPartsQuery = $db->query('SELECT * FROM inventory');
-	$invParts = $invPartsQuery->fetchAll();
+	$setQuery = $db->query('SELECT * FROM `sets`');
+	$sets = $setQuery->fetchAll();
 ?>
 
 <!DOCTYPE HTML>
@@ -19,7 +25,7 @@
 <head>
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<title> Magazyn Pinio.io </title>
 </head>
 <body>
@@ -37,31 +43,31 @@
 	<div class="main-grid">
 		<div class="left-bar">
 			<legend>Opcje</legend>
-			<button onclick="window.location.href = 'inventory-panel.php';"> Panel główny </button>
+			<button onclick="window.location.href = '#';"> Panel główny </button>
 			<button onclick="window.location.href = 'inventory-add-element.php';"> Dodaj akcesorium </button>
-			<button> Dodaj zestaw </button>
-			<button> Dodaj E100 </button>
-			<button> Dodaj AH30 </button>
+			<button onclick="window.location.href = 'inventory-add-set.php';"> Dodaj zestaw </button>
+			<button onclick="window.location.href = 'inventory-add-e100.php';"> Dodaj E100 </button>
+			<button onclick="window.location.href = 'inventory-add-ah30.php';"> Dodaj AH30 </button>
+			<button onclick="window.location.href = 'inventory-add-pinio.php';"> Dodaj PINIO </button>
 		</div>
 		<div class="main-content">
 			<legend>Dostępne zestawy:</legend>
-			
-			
+			<?php
+			foreach($sets as $set){
+				echo "<div>E100 {$set['e100']}, PINIO {$set['pinio']}, maskownice: wewn.:{$set['mask_in']}, zewn.:{$set['mask_out']}, trzpień: {$set['trzpien']}";
+				if($set['pad']){
+					echo ", podkładki 2szt.</div>";
+				}
+				else{
+					echo ".</div>";
+				}
+			}
+			?>
 		</div>
 		<div class="right-bar">
-			<legend>Magazyn</legend>
-			<table>
-				<thead>
-				<tr><th>ID</th><th>Nazwa</th><th>Ilość</th><th>Symbol</th></tr>
-				</thead>
-				<tbody>
-					<?php
-						foreach($invParts as $part){
-							echo "<tr><td>{$part['id']}</td><td>{$part['nazwa']}</td><td>{$part['ilosc']}</td><td>{$part['symbol']}</td></tr>";
-						}
-					?>
-				</tbody>
-			</table>
+			<?php
+			require 'html-magazyn.php';
+			?>
 		</div>	
 	</div>
 	<div class="footer">
