@@ -6,7 +6,7 @@
 
 <?php
 	session_start();
-	
+
 	if(!isset($_SESSION['log-in']))
 	{
 		header('Location: index.php');
@@ -103,25 +103,26 @@
 					<select id='availibility-select' name='availibility'>
 						<option disabled selected value> -- wybierz rozmiar -- </option>
 						<option value='70'> 70 </option>
-						<option value='72'> 72 </option>		
+						<option value='72'> 72 </option>
 						<option value='90'> 90 </option>
 						<option value='92'> 92 </option>
 						<option value='85'> 85 </option>
-						<option value='0'> blank </option>		
+						<option value='0'> blank </option>
 					</select>
 				</div>
 				<div>
+
 					<label for="battery-select">Mask. OUT</label>
 				</div>
 				<div>
 					<select id='availibility-select' name='availibility'>
 						<option disabled selected value> -- wybierz rozmiar -- </option>
 						<option value='70'> 70 </option>
-						<option value='72'> 72 </option>		
+						<option value='72'> 72 </option>
 						<option value='90'> 90 </option>
 						<option value='92'> 92 </option>
 						<option value='85'> 85 </option>
-						<option value='0'> blank </option>		
+						<option value='0'> blank </option>
 					</select>
 				</div>
 <!––
@@ -136,7 +137,7 @@
 					<input type="checkbox" id="battery-select" name="battery">
 				</div>
 
-				
+
 
 			</form>
 		</div>
@@ -144,7 +145,7 @@
 			<?php
 			require 'html-magazyn.php';
 			?>
-		</div>	
+		</div>
 	</div>
 	<div class="footer">
 	</div>
