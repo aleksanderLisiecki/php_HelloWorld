@@ -68,13 +68,22 @@
 				<div class="e100-add">
 					<form action="add-pinio.php" method="post" onsubmit="return confirm('Na pewno chcesz dodać element?');">
 						<h3>Dodaj PINIO:</h3>
-
+						<?php
+						if(isset($_SESSION['nonexisting-address'])){
+							echo('<div class="error">Adres AH30 w bazie nie istnieje</div>');
+							unset($_SESSION['nonexisting-address']);
+						}
+						if(isset($_SESSION['no-available'])){
+							echo('<div class="error">AH30 niedostępne</div>');
+							unset($_SESSION['no-available']);
+						}
+						?>
 						<label for="address-select">Wybór adresu AH30</label>
-						<select id="address-select" name="address-curr" required>
+						<select id="address-select" name="address" required>
 							<option disabled selected value> -- wybierz adres -- </option>
 							<?php
 								foreach($ah30 as $part){
-									echo "<option>{$part['adres']}</option>";
+									if($part['available']) echo "<option>{$part['adres']}</option>";
 								}
 							?>
 						</select>	
@@ -83,32 +92,7 @@
 						<button>Dodaj</button>
 					</form>
 				</div>
-<!––
-***
-* changing existing PINIO
-***
--->
-				<div class="e100-available">
-					<form action="change-e100.php" method="post">
-						<h3>Zmień dostępność:</h3>
-						<label for="address-select">Wybór PINIO</label>
-						<select id="address-select" name="address-curr" required>
-							<option disabled selected value> -- wybierz adres -- </option>
-							<?php
-								foreach($e100 as $part){
-									echo "<option>{$part['adres']}</option>";
-								}
-							?>
-						</select>
-						<select id='availibility-select' name='availibility'>
-							<option disabled selected value> <- wybierz adres</option>
-							<option value='0'> Niedostępny </option>
-							<option value='1'> Dostępny </option>		
-						</select>
-						<input type="hidden" name="place" value="inventory-add-e100.php">
-						<button>Aktualizuj</button>
-					</form>
-				</div>
+
 				<div class="e100-inventory">
 					<h3>Stan PINIO:</h3>	
 						<table>

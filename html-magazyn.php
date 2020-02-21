@@ -48,6 +48,22 @@ $ah30 = $ah30Query->fetchAll();
     </table>
 </div>
 
+<div class="pinio-sidebar-inventory">
+    <legend>Stan PINIO:</legend>	
+        <table>
+            <thead>
+            <tr><th>ID</th><th>Adres</th><th>Dostępność</th></tr>
+            </thead>
+            <tbody>
+                <?php
+                    foreach($pinio as $part){
+                        echo "<tr><td>{$part['id']}</td><td>{$part['adres']}</td><td>{$part['available']}</td></tr>";
+                    }
+                ?>
+            </tbody>
+        </table>
+</div>	
+
 <div class="ah30-sidebar-inventory">
     <legend>Stan AH30</legend>	
     <table>

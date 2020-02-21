@@ -112,8 +112,6 @@
 							echo('<div class="error">Adres już istnieje w bazie</div>');
 							unset($_SESSION['existing-address']);
 						}
-
-
 						?>
 						<label for="address-input">Adres dodawanego AH30</label>
 						<input name="address" id="address-input" maxlength=9 autocomplete=off title="Występujący błąd: podczas usuwania znaków należy usunąć także kropki" required>
