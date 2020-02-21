@@ -15,6 +15,9 @@
 	}
 	
 	$db = require_once 'database.php';
+
+	$setQuery = $db->query('SELECT * FROM `sets`');
+	$sets = $setQuery->fetchAll();
 ?>
 
 <!DOCTYPE HTML>
@@ -49,8 +52,17 @@
 		</div>
 		<div class="main-content">
 			<legend>Dostępne zestawy:</legend>
-			
-			
+			<?php
+			foreach($sets as $set){
+				echo "<div>E100 {$set['e100']}, PINIO {$set['pinio']}, maskownice: wewn.:{$set['mask_in']}, zewn.:{$set['mask_out']}, trzpień: {$set['trzpien']}";
+				if($set['pad']){
+					echo ", podkładki 2szt.</div>";
+				}
+				else{
+					echo ".</div>";
+				}
+			}
+			?>
 		</div>
 		<div class="right-bar">
 			<?php

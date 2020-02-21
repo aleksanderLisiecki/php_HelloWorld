@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 21 Lut 2020, 14:54
+-- Czas generowania: 21 Lut 2020, 17:20
 -- Wersja serwera: 10.4.10-MariaDB
 -- Wersja PHP: 7.3.12
 
@@ -47,7 +47,7 @@ INSERT INTO `ah30` (`id`, `address`, `available`, `timestamp`, `add_date`) VALUE
 (7, '[SD.FA.SD]', 0, '2020-02-21 11:59:56', '2020-02-21 11:25:43'),
 (8, '[AS.DF.AS]', 0, '2020-02-21 10:43:43', '2020-02-21 11:25:46'),
 (9, '[21.34.54]', 0, '2020-02-21 12:22:50', '2020-02-21 11:25:49'),
-(10, '[12.34.56]', 1, '2020-02-21 10:25:52', '2020-02-21 11:25:52'),
+(10, '[12.34.56]', 0, '2020-02-21 14:57:58', '2020-02-21 11:25:52'),
 (11, '[12.34.53]', 0, '2020-02-21 10:44:03', '2020-02-21 11:26:02'),
 (12, '[12.34.55]', 1, '2020-02-21 11:00:08', '2020-02-21 12:00:08'),
 (13, '[AS.4F.D2]', 1, '2020-02-21 11:00:20', '2020-02-21 12:00:20');
@@ -102,7 +102,7 @@ CREATE TABLE `inventory` (
 
 INSERT INTO `inventory` (`id`, `name`, `quantity`, `symbol`, `timestamp`, `add_date`) VALUES
 (1, 'E100', 8, '', '2020-02-21 08:23:16', '2020-02-05 14:48:43'),
-(2, 'AH30', 3, '', '2020-02-21 12:22:50', '2020-02-05 14:48:43'),
+(2, 'AH30', 2, '', '2020-02-21 14:57:58', '2020-02-05 14:48:43'),
 (3, 'PINIO', 2, '', '2020-02-13 13:28:58', '2020-02-05 14:48:43'),
 (4, 'Bateria', 5, 'Philips003', '2020-02-13 13:28:52', '2020-02-11 20:46:07'),
 (5, 'Karta pamięci', 1, 'memXD', '2020-02-13 13:00:41', '2020-02-13 12:40:48'),
@@ -153,7 +153,8 @@ INSERT INTO `pinio` (`id`, `address`, `available`, `timestamp`, `add_date`) VALU
 (1, '[12.31.23]', 1, '2020-02-21 11:22:57', '2020-02-21 12:22:57'),
 (2, '[09.26.00]', 1, '2020-02-21 11:59:49', '2020-02-21 12:59:49'),
 (3, '[SD.FA.SD]', 1, '2020-02-21 11:59:56', '2020-02-21 12:59:56'),
-(4, '[21.34.54]', 1, '2020-02-21 12:22:50', '2020-02-21 13:22:50');
+(4, '[21.34.54]', 1, '2020-02-21 12:22:50', '2020-02-21 13:22:50'),
+(5, '[12.34.56]', 1, '2020-02-21 14:57:58', '2020-02-21 15:57:58');
 
 -- --------------------------------------------------------
 
@@ -163,15 +164,23 @@ INSERT INTO `pinio` (`id`, `address`, `available`, `timestamp`, `add_date`) VALU
 
 CREATE TABLE `sets` (
   `id` int(11) NOT NULL,
-  `e100` int(11) NOT NULL,
-  `pinio` int(11) NOT NULL,
-  `mask-in` int(11) NOT NULL,
-  `mask-out` int(11) NOT NULL,
+  `e100` text NOT NULL,
+  `pinio` text NOT NULL,
+  `mask_in` int(11) NOT NULL,
+  `mask_out` int(11) NOT NULL,
   `trzpien` text NOT NULL,
   `pad` tinyint(1) NOT NULL,
   `timestamp` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `add_date` datetime NOT NULL
+  `add_date` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Zrzut danych tabeli `sets`
+--
+
+INSERT INTO `sets` (`id`, `e100`, `pinio`, `mask_in`, `mask_out`, `trzpien`, `pad`, `timestamp`, `add_date`) VALUES
+(1, '[0A.BA.1E]', '[12.31.23]', 70, 70, '8/40-50', 1, '2020-02-21 15:44:51', '0000-00-00 00:00:00'),
+(2, '[xx.xx.xx]', '[12.31.23]', 72, 72, '8mm/60-70mm (śruby M5x50 3szt.)', 0, '2020-02-21 16:09:59', '2020-02-21 17:09:59');
 
 --
 -- Indeksy dla zrzutów tabel
@@ -245,13 +254,13 @@ ALTER TABLE `logins`
 -- AUTO_INCREMENT dla tabeli `pinio`
 --
 ALTER TABLE `pinio`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT dla tabeli `sets`
 --
 ALTER TABLE `sets`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

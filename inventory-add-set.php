@@ -154,12 +154,12 @@
 				<div class="trzpien-select">
 					<select id='trzpien-select' name='trzpien' required>
 						<option disabled selected value> -- wybierz rozmiar -- </option>
-						<option value='8/40-50'> 8mm/40-50mm (śruby M5x30 3szt.)</option>
-						<option value='8/50-60'> 8mm/50-60mm (śruby M5x40 3szt.)</option>
-						<option value='8/60-70'> 8mm/60-70mm (śruby M5x50 3szt.)</option>
-						<option value='8/70-80'> 8mm/70-80mm (śruby M5x60 3szt.)</option>
-						<option value='8/80-90'> 8mm/80-90mm (śruby M5x70 3szt.)</option>
-						<option value='8/90-100'> 8mm/90-100mm (śruby M5x80 3szt.)</option>
+						<option> 8mm/50-60mm (śruby M5x40 3szt.)</option>
+						<option> 8mm/40-50mm (śruby M5x30 3szt.)</option>
+						<option> 8mm/60-70mm (śruby M5x50 3szt.)</option>
+						<option> 8mm/70-80mm (śruby M5x60 3szt.)</option>
+						<option> 8mm/80-90mm (śruby M5x70 3szt.)</option>
+						<option> 8mm/90-100mm (śruby M5x80 3szt.)</option>
 					</select>
 				</div>
 <!––
