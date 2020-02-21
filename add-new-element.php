@@ -5,9 +5,8 @@
 		 echo '</script>';
 	}
 
-	session_start();	#otwiera sesje (zmienne)
+	session_start();	
 	
-	//formulaz wysłany?
 	if(!isset($_POST['place']))
 	{
 		header('Location: inventory-panel.php');
@@ -23,7 +22,7 @@
 
 	$db = require_once 'database.php';
 
-	$query = $db->prepare('INSERT INTO inventory (nazwa, ilosc, symbol) VALUES (:namee, :quantity, :symbol)');
+	$query = $db->prepare('INSERT INTO inventory (name, quantity, symbol) VALUES (:namee, :quantity, :symbol)');
 	$query->bindValue(':namee', $_POST['name-new'], PDO::PARAM_STR);
 	$query->bindValue(':quantity', intval($_POST['quantity-new']), PDO::PARAM_INT);
 	$query->bindValue(':symbol', $_POST['symbol-new'], PDO::PARAM_STR);

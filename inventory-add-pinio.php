@@ -27,7 +27,7 @@
 <head>
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<title> Magazyn Pinio.io </title>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -83,13 +83,16 @@
 							<option disabled selected value> -- wybierz adres -- </option>
 							<?php
 								foreach($ah30 as $part){
-									if($part['available']) echo "<option>{$part['adres']}</option>";
+									if($part['available']){
+										echo "<option>{$part['address']}</option>";
+									} 
 								}
 							?>
 						</select>	
-
 						<input type="hidden" name="place" value="inventory-add-pinio.php">
 						<button>Dodaj</button>
+
+						<p class="info"><i>(i) Dodanie PINIO powoduje zmianę dostępności AH30 o wybranym adresie</i></p>
 					</form>
 				</div>
 
@@ -102,7 +105,7 @@
 							<tbody>
 								<?php
 									foreach($pinio as $part){
-										echo "<tr><td>{$part['id']}</td><td>{$part['adres']}</td><td>{$part['available']}</td></tr>";
+										echo "<tr><td>{$part['id']}</td><td>{$part['address']}</td><td>{$part['available']}</td></tr>";
 									}
 								?>
 							</tbody>

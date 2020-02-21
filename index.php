@@ -4,7 +4,6 @@
 $haslo = "alex1"
 var_dump(password_hash($haslo, PASSWORD_DEFAULT));
 exit();
-
 */
 	function clog( $data ){
 		 echo '<script>';
@@ -19,7 +18,7 @@ exit();
 	if((isset($_SESSION['log-in'])) && ($_SESSION['log-in']==true))
 	{
 		header('Location: inventory-panel.php');
-		exit();	#opusc plik jezeli wystapil ten warunek, w przeciwnym razie wykona sie caly kod strony i dopiero przejdzie do inventory-panel)
+		exit();
 	}
 	
 	
@@ -36,7 +35,7 @@ exit();
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 	<title> Magazyn Pinio.io </title>
 	
-	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
 	
 	<script src="https://www.google.com/recaptcha/api.js?render=<?php echo SITE_KEY; ?>"></script>
 

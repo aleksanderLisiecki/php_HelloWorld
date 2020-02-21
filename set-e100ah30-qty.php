@@ -8,6 +8,6 @@ foreach($parts as $part){
 
 	$quantity = count($query);
 
-	$query = $db->prepare('UPDATE inventory SET ilosc = ? WHERE inventory.nazwa = ?');
+	$query = $db->prepare('UPDATE inventory SET quantity = ? WHERE inventory.name = ?');
 	$query->execute([$quantity, $part]);
 }

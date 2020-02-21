@@ -25,12 +25,12 @@
 <head>
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<title> Magazyn Pinio.io </title>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<script>
-	//*** funkcje templatki wypisywania adresu ***/
+	//*** funkcje templatki wypisywania addressu ***/
 	$(document).ready(function(){
 		$("#address-input").keypress(function () {
 			$(this).val('['+$(this).val().replace(/\[|\]/g, ''));
@@ -60,7 +60,7 @@
 
 		select1.on('change', function(event) {
 			for(var i=0; i<a.length; i++){
-				if(a[i]['adres'] === select1.val()){
+				if(a[i]['address'] === select1.val()){
 					select2.val(a[i]['available']);
 					select2.show();
 				};
@@ -135,7 +135,7 @@
 							<option disabled selected value> -- wybierz adres -- </option>
 							<?php
 								foreach($e100 as $part){
-									echo "<option>{$part['adres']}</option>";
+									echo "<option>{$part['address']}</option>";
 								}
 							?>
 						</select>
@@ -157,7 +157,7 @@
 							<tbody>
 								<?php
 									foreach($e100 as $part){
-										echo "<tr><td>{$part['id']}</td><td>{$part['adres']}</td><td>{$part['available']}</td></tr>";
+										echo "<tr><td>{$part['id']}</td><td>{$part['address']}</td><td>{$part['available']}</td></tr>";
 									}
 								?>
 							</tbody>

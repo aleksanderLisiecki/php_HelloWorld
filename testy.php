@@ -27,8 +27,8 @@ $(function() {
     select1.on('change', function(event) {
         console.log(select1.val());
         for(var i=0; i<a.length; i++){
-            console.log(a[i]['adres']);
-            if(a[i]['adres'] === select1.val()){
+            console.log(a[i]['address']);
+            if(a[i]['address'] === select1.val()){
                 console.log(a[i]['id']);
             };
         }
@@ -48,7 +48,7 @@ $(function() {
             <option disabled selected value> -- wybierz adres -- </option>
             <?php
                 foreach($e100 as $part){
-                    echo "<option>{$part['adres']}</option>";
+                    echo "<option>{$part['address']}</option>";
                 }
             ?>
         </select>

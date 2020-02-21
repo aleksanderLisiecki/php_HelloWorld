@@ -26,7 +26,7 @@
 <head>
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<title> Magazyn Pinio.io </title>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -55,12 +55,12 @@
 		var select1 = $("#address-select");
 		var select2 = $("#availibility-select");
 
-		var a= <?php echo json_encode($ah30); ?>; 
+		var ah30 = <?php echo json_encode($ah30); ?>; 
 
 		select1.on('change', function(event) {
-			for(var i=0; i<a.length; i++){
-				if(a[i]['adres'] === select1.val()){
-					select2.val(a[i]['available']);
+			for(var i=0; i<ah30.length; i++){
+				if(ah30[i]['address'] === select1.val()){
+					select2.val(ah30[i]['available']);
 					select2.show();
 				};
 			}
@@ -132,7 +132,7 @@
 							<option disabled selected value> -- wybierz adres -- </option>
 							<?php
 								foreach($ah30 as $part){
-									echo "<option>{$part['adres']}</option>";
+									echo "<option>{$part['address']}</option>";
 								}
 							?>
 						</select>
@@ -154,7 +154,7 @@
 							<tbody>
 								<?php
 									foreach($ah30 as $part){
-										echo "<tr><td>{$part['id']}</td><td>{$part['adres']}</td><td>{$part['available']}</td></tr>";
+										echo "<tr><td>{$part['id']}</td><td>{$part['address']}</td><td>{$part['available']}</td></tr>";
 									}
 								?>
 							</tbody>

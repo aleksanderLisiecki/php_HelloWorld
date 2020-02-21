@@ -18,8 +18,8 @@
 	$e100Query = $db->query('SELECT * FROM e100');
 	$e100 = $e100Query->fetchAll();
 
-	$ah30Query = $db->query('SELECT * FROM ah30');
-	$ah30 = $ah30Query->fetchAll();
+	$pinioQuery = $db->query('SELECT * FROM pinio');
+	$pinio = $pinioQuery->fetchAll();
 ?>
 
 <!DOCTYPE HTML>
@@ -27,8 +27,23 @@
 <head>
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<title> Magazyn Pinio.io </title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script>
+
+	$(document).ready(function(){
+				
+		$(function() {
+		var select1 = $("#mask-in-select");
+		var select2 = $("#mask-out-select");
+
+		select1.on('change', function(event) {
+			select2.val(select1.val());
+		});
+		});
+	});
+	</script>
 </head>
 <body>
 
@@ -68,25 +83,29 @@
 						<option disabled selected value> -- wybierz adres -- </option>
 						<?php
 							foreach($e100 as $part){
-								echo "<option>{$part['adres']}</option>";
+								if($part['available']){
+									echo "<option>{$part['address']}</option>";
+								}
 							}
 						?>
 					</select>
 				</div>
 <!––
 ***
-* AH30
+* PINIO
 ***
 -->
-				<div class="ah30-label">
-					<label for="ah30-select">AH30</label>
+				<div class="pinio-label">
+					<label for="pinio-select">PINIO</label>
 				</div>
-				<div class="ah30-select">
-					<select id="ah30-select" name="ah30-address" required>
+				<div class="pinio-select">
+					<select id="pinio-select" name="pinio-address" required>
 						<option disabled selected value> -- wybierz adres -- </option>
 						<?php
-							foreach($ah30 as $part){
-								echo "<option>{$part['adres']}</option>";
+							foreach($pinio as $part){
+								if($part['available']){
+									echo "<option>{$part['address']}</option>";
+								}
 							}
 						?>
 					</select>
@@ -100,7 +119,7 @@
 					<label for="mask-select">Mask. IN</label>
 				</div>
 				<div class="mask-in-select">
-					<select id='mask-select' name='mask-in'>
+					<select id='mask-in-select' name='mask-in' required>
 						<option disabled selected value> -- wybierz rozmiar -- </option>
 						<option value='70'> 70 </option>
 						<option value='72'> 72 </option>
@@ -114,7 +133,7 @@
 					<label for="mask-select">Mask. OUT</label>
 				</div>
 				<div class="mask-out-select">
-					<select id='mask-select' name='mask-out'>
+					<select id='mask-out-select' name='mask-out' required>
 						<option disabled selected value> -- wybierz rozmiar -- </option>
 						<option value='70'> 70 </option>
 						<option value='72'> 72 </option>
@@ -126,18 +145,36 @@
 				</div>
 <!––
 ***
-* Baterry
+* Trzpień
 ***
 -->
-				<div class="bettery-label">
-					<label for="battery-select">Bateria</label>
+				<div class="trzpien-label">
+					<label for="trzpien-select">Trzpień</label>
 				</div>
-				<div class="battery-select">
-					<input type="checkbox" id="battery-select" name="battery">
+				<div class="trzpien-select">
+					<select id='trzpien-select' name='trzpien' required>
+						<option disabled selected value> -- wybierz rozmiar -- </option>
+						<option value='8/40-50'> 8mm/40-50mm (śruby M5x30 3szt.)</option>
+						<option value='8/50-60'> 8mm/50-60mm (śruby M5x40 3szt.)</option>
+						<option value='8/60-70'> 8mm/60-70mm (śruby M5x50 3szt.)</option>
+						<option value='8/70-80'> 8mm/70-80mm (śruby M5x60 3szt.)</option>
+						<option value='8/80-90'> 8mm/80-90mm (śruby M5x70 3szt.)</option>
+						<option value='8/90-100'> 8mm/90-100mm (śruby M5x80 3szt.)</option>
+					</select>
 				</div>
-
-
-
+<!––
+***
+* Podkładka
+***
+-->
+				<div class="pad-label">
+					<label for="pad-select">Podkładka pod maskownice</label></label>
+				</div>
+				<div class="pad-select">
+					<input type="checkbox" id="pad-select" name="pad">
+				</div>
+				<input type="hidden" name="place" value="inventory-add-set.php">
+				<button class="kit-form-add-button">Dodaj</button>
 			</form>
 		</div>
 		<div class="right-bar">

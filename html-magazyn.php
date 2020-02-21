@@ -12,6 +12,9 @@ $invParts = $invPartsQuery->fetchAll();
 $e100Query = $db->query('SELECT * FROM e100');
 $e100 = $e100Query->fetchAll();
 
+$pinioQuery = $db->query('SELECT * FROM pinio');
+$pinio = $pinioQuery->fetchAll();
+
 $ah30Query = $db->query('SELECT * FROM ah30');
 $ah30 = $ah30Query->fetchAll();
 
@@ -25,7 +28,7 @@ $ah30 = $ah30Query->fetchAll();
         <tbody>
             <?php
                 foreach($invParts as $part){
-                    echo "<tr><td>{$part['id']}</td><td>{$part['nazwa']}</td><td>{$part['ilosc']}</td><td>{$part['symbol']}</td></tr>";
+                    echo "<tr><td>{$part['id']}</td><td>{$part['name']}</td><td>{$part['quantity']}</td><td>{$part['symbol']}</td></tr>";
                 }
             ?>
         </tbody>    
@@ -41,7 +44,7 @@ $ah30 = $ah30Query->fetchAll();
         <tbody>
             <?php
                 foreach($e100 as $part){
-                    echo "<tr><td>{$part['id']}</td><td>{$part['adres']}</td><td>{$part['available']}</td></tr>";
+                    echo "<tr><td>{$part['id']}</td><td>{$part['address']}</td><td>{$part['available']}</td></tr>";
                 }
             ?>
         </tbody>
@@ -57,7 +60,7 @@ $ah30 = $ah30Query->fetchAll();
             <tbody>
                 <?php
                     foreach($pinio as $part){
-                        echo "<tr><td>{$part['id']}</td><td>{$part['adres']}</td><td>{$part['available']}</td></tr>";
+                        echo "<tr><td>{$part['id']}</td><td>{$part['address']}</td><td>{$part['available']}</td></tr>";
                     }
                 ?>
             </tbody>
@@ -73,7 +76,7 @@ $ah30 = $ah30Query->fetchAll();
         <tbody>
             <?php
                 foreach($ah30 as $part){
-                    echo "<tr><td>{$part['id']}</td><td>{$part['adres']}</td><td>{$part['available']}</td></tr>";
+                    echo "<tr><td>{$part['id']}</td><td>{$part['address']}</td><td>{$part['available']}</td></tr>";
                 }
             ?>
         </tbody>

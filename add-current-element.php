@@ -1,7 +1,6 @@
  <?php
-	session_start();	#otwiera sesje (zmienne)
+	session_start();	
 	
-	//formulaz wysłany?
 	if(!isset($_POST['place']))
 	{
 		header('Location: inventory-panel.php');
@@ -10,16 +9,16 @@
 
 	$db = require_once 'database.php';
 
-	$invPartsQuery = $db->prepare("SELECT ilosc FROM inventory WHERE nazwa=? ");
+	$invPartsQuery = $db->prepare("SELECT quantity FROM inventory WHERE name=? ");
 	$invPartsQuery->execute([$_POST['name-curr']]);
 	
 	$partQty = $invPartsQuery->fetch();
 	
-	$partQty = $partQty['ilosc'];
+	$partQty = $partQty['quantity'];
 
 	$partQty += intval($_POST['quantity-curr']);
 
-	$query = $db->prepare('UPDATE `inventory` SET `ilosc` = :quantity WHERE `inventory`.`nazwa` = :namee');
+	$query = $db->prepare('UPDATE `inventory` SET `quantity` = :quantity WHERE `inventory`.`name` = :namee');
 	$query->execute([':namee' => $_POST['name-curr'], ':quantity' => intval($partQty)]);
 
 	header("Location: {$_POST['place']}");

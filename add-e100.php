@@ -1,7 +1,6 @@
  <?php
-	session_start();	#otwiera sesje (zmienne)
+	session_start();	
 	
-	//formulaz wysłany?
 	if(!isset($_POST['place']))
 	{
 		header('Location: inventory-panel.php');
@@ -16,12 +15,12 @@
 
 	$db = require_once 'database.php';
 
-	$query = $db->prepare('SELECT * FROM e100 WHERE adres = ?');
+	$query = $db->prepare('SELECT * FROM e100 WHERE address = ?');
 	$query->execute([$_POST['address']]);
 
 	$e100 = $query->fetchColumn();
 	if(!$e100){
-		$query = $db->prepare('INSERT INTO e100 (adres, available) VALUES (?,?)');
+		$query = $db->prepare('INSERT INTO e100 (address, available) VALUES (?,?)');
 		$query->execute([$_POST['address'], TRUE]);
 	}
 	else{

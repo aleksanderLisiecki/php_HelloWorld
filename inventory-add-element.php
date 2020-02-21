@@ -28,7 +28,7 @@
 <head>
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<title> Magazyn Pinio.io </title>
 </head>
 
@@ -70,7 +70,7 @@
 								<option disabled selected value> -- wybierz element -- </option>
 								<?php
 									foreach($invParts as $part){
-										echo "<option>{$part['nazwa']}</option>";
+										echo "<option>{$part['name']}</option>";
 									}
 								?>
 							</select>

@@ -67,6 +67,9 @@ h3{
     margin-top: 8px;
     margin-bottom: 8px;
 }
+.info{
+    font-size: smaller;
+}
 
 /*
 * === END LOGIN ===
@@ -145,7 +148,7 @@ h3{
 }
 
 .right-bar div{
-    height: 200px;
+    max-height: 200px;
     overflow: auto;
 }
 
@@ -229,40 +232,14 @@ tr:nth-child(even){
 
 .kit-form-class{
     display: grid;
+    grid-template-columns: auto auto;
     justify-items: stretch;
-    grid-template-columns: auto auto auto auto auto;
 }
-.e100-label{
-    grid-area: 1/1;
-    
-}
-.e100-select{
-    grid-area: 2/1;
-}
-.ah30-label{
-    grid-area: 1/2;
-}
-.ah30-select{
-    grid-area: 2/2;
-}
-.mask-in-label{
-    grid-area: 1/3;
-    
-}
-.mask-in-select{
-    grid-area: 2/3;
-}
-.mask-out-label{
-    grid-area: 1/4;
-    
-}
-.mask-out-select{
-    grid-area: 2/4;
-}
-.battery-label{
-    grid-area: 1/5;
-    
-}
-.battery-select{
-    grid-area: 2/5;
+.kit-form-add-button{
+    margin:10px;
+    padding:5px;
+    width: 80px;
+    margin-left: auto;
+    margin-right: auto;
+    grid-column: 2;
 }
