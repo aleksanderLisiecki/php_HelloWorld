@@ -20,7 +20,6 @@
 
 	$ah30Query = $db->query('SELECT * FROM ah30');
 	$ah30 = $ah30Query->fetchAll();
-
 ?>
 
 <!DOCTYPE HTML>
@@ -51,6 +50,7 @@
 			<button onclick="window.location.href = '#';"> Dodaj zestaw </button>
 			<button onclick="window.location.href = 'inventory-add-e100.php';"> Dodaj E100 </button>
 			<button onclick="window.location.href = 'inventory-add-ah30.php';"> Dodaj AH30 </button>
+			<button onclick="window.location.href = 'inventory-add-pinio.php';"> Dodaj PINIO </button>
 		</div>
 		<div class="main-content" id="kit-form">
 			<legend>Dodaj zestaw:</legend>
@@ -60,10 +60,10 @@
 * E100
 ***
 -->
-				<div>
+				<div class="e100-label">
 					<label for="e100-select">E100</label>
 				</div>
-				<div>
+				<div class="e100-select">
 					<select id="e100-select" name="e100-address" required>
 						<option disabled selected value> -- wybierz adres -- </option>
 						<?php
@@ -78,10 +78,10 @@
 * AH30
 ***
 -->
-				<div>
+				<div class="ah30-label">
 					<label for="ah30-select">AH30</label>
 				</div>
-				<div>
+				<div class="ah30-select">
 					<select id="ah30-select" name="ah30-address" required>
 						<option disabled selected value> -- wybierz adres -- </option>
 						<?php
@@ -96,11 +96,11 @@
 * Maskownice
 ***
 -->
-				<div>
-					<label for="battery-select">Mask. IN</label>
+				<div class="mask-in-label">
+					<label for="mask-select">Mask. IN</label>
 				</div>
-				<div>
-					<select id='availibility-select' name='availibility'>
+				<div class="mask-in-select">
+					<select id='mask-select' name='mask-in'>
 						<option disabled selected value> -- wybierz rozmiar -- </option>
 						<option value='70'> 70 </option>
 						<option value='72'> 72 </option>
@@ -110,12 +110,11 @@
 						<option value='0'> blank </option>
 					</select>
 				</div>
-				<div>
-
-					<label for="battery-select">Mask. OUT</label>
+				<div class="mask-out-label">
+					<label for="mask-select">Mask. OUT</label>
 				</div>
-				<div>
-					<select id='availibility-select' name='availibility'>
+				<div class="mask-out-select">
+					<select id='mask-select' name='mask-out'>
 						<option disabled selected value> -- wybierz rozmiar -- </option>
 						<option value='70'> 70 </option>
 						<option value='72'> 72 </option>
@@ -130,10 +129,10 @@
 * Baterry
 ***
 -->
-				<div>
+				<div class="bettery-label">
 					<label for="battery-select">Bateria</label>
 				</div>
-				<div>
+				<div class="battery-select">
 					<input type="checkbox" id="battery-select" name="battery">
 				</div>
 

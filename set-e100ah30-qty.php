@@ -1,5 +1,4 @@
 <?php
-
 $parts = ["E100", "AH30"];
 
 foreach($parts as $part){

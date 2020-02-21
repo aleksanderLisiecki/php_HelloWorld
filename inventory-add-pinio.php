@@ -1,9 +1,7 @@
 <!––
 ***
-* adding and changing availibility of AH30, 
-* page is directly copy of adding E100 (css class name is for the e100 too)
-* witch change in fetching DB data in PHP section
-* and F/E tags 
+* adding E100 to DB
+* and changing availibility E100 in DB
 ***
 -->
 <?php
@@ -16,6 +14,9 @@
 	}
 	
 	$db = require_once 'database.php';
+
+	$pinioQuery = $db->query('SELECT * FROM pinio');
+	$pinio = $pinioQuery->fetchAll();
 
 	$ah30Query = $db->query('SELECT * FROM ah30');
 	$ah30 = $ah30Query->fetchAll();
@@ -30,44 +31,7 @@
 	<title> Magazyn Pinio.io </title>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-	<script>
-	//*** funkcje templatki wypisywania adresu ***/
-	$(document).ready(function(){
-		$("#address-input").keypress(function () {
-			$(this).val('['+$(this).val().replace(/\[|\]/g, ''));
-			var len=this.value.length - 1;
-			x = this.value.match(/\./g)
-			if(x) len -= x.length;
-			if(((len % 2) == 0) && len < this.maxLength-3 && len > 1){
-				$(this).val($(this).val() + '.');
-				}
-		});
-		$("#address-input").keyup(function () {
-			this.value = this.value.toUpperCase();
-
-			$(this).val(($(this).val().replace(/\]/g, '')) + "]");
-			var pos = $(this).val().length - 1;
-			this.setSelectionRange(pos, pos);
-		});
-		
-		//*** funkcja opcji select  ***/
-		$(function() {
-		var select1 = $("#address-select");
-		var select2 = $("#availibility-select");
-
-		var a= <?php echo json_encode($ah30); ?>; 
-
-		select1.on('change', function(event) {
-			for(var i=0; i<a.length; i++){
-				if(a[i]['adres'] === select1.val()){
-					select2.val(a[i]['available']);
-					select2.show();
-				};
-			}
-		});
-		});
-	});
-	</script>
+	
 </head>
 
 <body>
@@ -88,52 +52,50 @@
 			<button onclick="window.location.href = 'inventory-add-element.php';"> Dodaj akcesorium </button>
 			<button onclick="window.location.href = 'inventory-add-set.php';"> Dodaj zestaw </button>
 			<button onclick="window.location.href = 'inventory-add-e100.php';"> Dodaj E100 </button>
-			<button onclick="window.location.href = '#';"> Dodaj AH30 </button>
-			<button onclick="window.location.href = 'inventory-add-pinio.php';"> Dodaj PINIO </button>
+			<button onclick="window.location.href = 'inventory-add-ah30.php';"> Dodaj AH30 </button>
+			<button onclick="window.location.href = '#';"> Dodaj PINIO </button>
+
 		</div>
 		<div class="main-content">
-			<legend>AH30:</legend>
+			<legend>PINIO:</legend>
 
 			<div class="e100-main-content">
 <!––
 ***
-* adding new ah30 to DB
+* adding new PINIO to DB
 ***
 -->
 				<div class="e100-add">
-					<form action="add-ah30.php" method="post" onsubmit="return confirm('Na pewno chcesz dodać element?');">
-						<h3>Dodaj AH30:</h3>
-						<?php
-						if(isset($_SESSION['invalid-address'])){
-							echo('<div class="error">Nieprawidłowy adres (format: "[XX.XX.XX]")</div>');
-							unset($_SESSION['invalid-address']);
-						}
-						if(isset($_SESSION['existing-address'])){
-							echo('<div class="error">Adres już istnieje w bazie</div>');
-							unset($_SESSION['existing-address']);
-						}
+					<form action="add-pinio.php" method="post" onsubmit="return confirm('Na pewno chcesz dodać element?');">
+						<h3>Dodaj PINIO:</h3>
 
+						<label for="address-select">Wybór adresu AH30</label>
+						<select id="address-select" name="address-curr" required>
+							<option disabled selected value> -- wybierz adres -- </option>
+							<?php
+								foreach($ah30 as $part){
+									echo "<option>{$part['adres']}</option>";
+								}
+							?>
+						</select>	
 
-						?>
-						<label for="address-input">Adres dodawanego AH30</label>
-						<input name="address" id="address-input" maxlength=9 autocomplete=off title="Występujący błąd: podczas usuwania znaków należy usunąć także kropki" required>
-						<input type="hidden" name="place" value="inventory-add-ah30.php">
+						<input type="hidden" name="place" value="inventory-add-pinio.php">
 						<button>Dodaj</button>
 					</form>
 				</div>
 <!––
 ***
-* changing existing ah30
+* changing existing PINIO
 ***
 -->
 				<div class="e100-available">
-					<form action="change-ah30.php" method="post">
+					<form action="change-e100.php" method="post">
 						<h3>Zmień dostępność:</h3>
-						<label for="address-select">Wybór AH30</label>
+						<label for="address-select">Wybór PINIO</label>
 						<select id="address-select" name="address-curr" required>
 							<option disabled selected value> -- wybierz adres -- </option>
 							<?php
-								foreach($ah30 as $part){
+								foreach($e100 as $part){
 									echo "<option>{$part['adres']}</option>";
 								}
 							?>
@@ -143,19 +105,19 @@
 							<option value='0'> Niedostępny </option>
 							<option value='1'> Dostępny </option>		
 						</select>
-						<input type="hidden" name="place" value="inventory-add-ah30.php">
+						<input type="hidden" name="place" value="inventory-add-e100.php">
 						<button>Aktualizuj</button>
 					</form>
 				</div>
 				<div class="e100-inventory">
-					<h3>Stan AH30:</h3>	
+					<h3>Stan PINIO:</h3>	
 						<table>
 							<thead>
 							<tr><th>ID</th><th>Adres</th><th>Dostępność</th></tr>
 							</thead>
 							<tbody>
 								<?php
-									foreach($ah30 as $part){
+									foreach($pinio as $part){
 										echo "<tr><td>{$part['id']}</td><td>{$part['adres']}</td><td>{$part['available']}</td></tr>";
 									}
 								?>

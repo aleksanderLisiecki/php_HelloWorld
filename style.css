@@ -1,11 +1,11 @@
 :root {
     --primary-color: #50a1ff;
     --second-color: #5bc0de;
+    --back-color: rgb(0, 25, 44);
   }
 
 body{
-    background-color: rgb(0, 24, 42);
-    margin: 13px;
+    background-color: var(--back-color);
     font-family: 'Open-sans', sans-serif;
 }
 legend{
@@ -20,6 +20,34 @@ input[type="number"]{
 h3{
     border-bottom: 1px solid;
 }
+
+/*
+* === SCROLLBAR ===
+*/
+
+/* width */
+::-webkit-scrollbar {
+    width: 5px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px rgb(100, 100, 100); 
+    border-radius: 5px;
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: var(--back-color); 
+    border-radius: 10px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: black; 
+  }
+
+
 
 /*
 * === LOGIN ===
@@ -101,6 +129,7 @@ h3{
     background-color: var(--primary-color);
     padding: 10px;
     display: grid;
+    align-content: start;
     gap: 2px;
 }
 .main-content{
@@ -108,8 +137,16 @@ h3{
     padding: 10px;
 }
 .right-bar{
+    display: grid;
+    grid-gap: 5px;
+    min-width: 235px;
     background-color: var(--primary-color);
     padding: 10px;
+}
+
+.right-bar div{
+    height: 200px;
+    overflow: auto;
 }
 
 /*
@@ -118,6 +155,7 @@ h3{
 table{
     width: 100%;
     border-collapse: collapse;
+    margin-bottom: 10px;
 }
 table, th, td{
     padding: 2px;
@@ -166,11 +204,11 @@ tr:nth-child(even){
     grid-column: 2;
     grid-row: 1 / last-line;
 }
-/*
+
 #availibility-select{
     display: none;
 }
-*/
+
 
 /*
 * === SET FORM ===
@@ -184,10 +222,47 @@ tr:nth-child(even){
 } 
 #kit-form div {
     padding: 5px;
+    display: flex;
+    justify-content: center;
     border-bottom: 1px solid;
 }
 
 .kit-form-class{
     display: grid;
-    grid-template-columns: 10% 15%;
+    justify-items: stretch;
+    grid-template-columns: auto auto auto auto auto;
+}
+.e100-label{
+    grid-area: 1/1;
+    
+}
+.e100-select{
+    grid-area: 2/1;
+}
+.ah30-label{
+    grid-area: 1/2;
+}
+.ah30-select{
+    grid-area: 2/2;
+}
+.mask-in-label{
+    grid-area: 1/3;
+    
+}
+.mask-in-select{
+    grid-area: 2/3;
+}
+.mask-out-label{
+    grid-area: 1/4;
+    
+}
+.mask-out-select{
+    grid-area: 2/4;
+}
+.battery-label{
+    grid-area: 1/5;
+    
+}
+.battery-select{
+    grid-area: 2/5;
 }
