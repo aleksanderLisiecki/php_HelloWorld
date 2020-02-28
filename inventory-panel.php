@@ -50,34 +50,34 @@
 			<button onclick="window.location.href = 'inventory-add-ah30.php';"> Dodaj AH30 </button>
 			<button onclick="window.location.href = 'inventory-add-pinio.php';"> Dodaj PINIO </button>
 		</div>
-		<div class="main-content">
-			<legend>Dostępne zestawy:</legend>
+		<div class="inventory-panel">
+			<div class="kits-inventory">
+				<legend>Dostępne zestawy</legend>
 
-			<table>
-				<thead>
-				<tr><th>ID</th> <th>E100</th> <th>PINIO</th> <th>Mask.(IN/OUT)</th> <th>Trzpień</th> <th>Podkładki</th> </tr>
-				</thead>
-				<tbody>
-					<?php
-					foreach($sets as $set){
-						echo "<tr><td>{$set['id']}</td> <td>{$set['e100']}</td> <td>{$set['pinio']}</td><td>{$set['mask_in']}/{$set['mask_out']}</td><td>{$set['trzpien']}</td>";
-						if($set['pad']){
-							echo "<td>2szt</td></tr>";
+				<table>
+					<thead>
+					<tr> <th>ID</th> <th>E100</th> <th>PINIO</th> <th>Mask.(IN/OUT)</th> <th>Trzpień</th> <th>Podkładki</th> </tr>
+					</thead>
+					<tbody>
+						<?php
+						foreach($sets as $set){
+							echo "<tr><td>{$set['id']}</td> <td>{$set['e100']}</td> <td>{$set['pinio']}</td><td>{$set['mask_in']}/{$set['mask_out']}</td><td>{$set['trzpien']}</td>";
+							if($set['pad']){
+								echo "<td>2szt</td></tr>";
+							}
+							else{
+								echo "<td>brak</td></tr>";
+							}
 						}
-						else{
-							echo "<td>brak</td></tr>";
-						}
-					}
-					?>
-				</tbody>    
-			</table>
-			
-		</div>
-		<div class="right-bar">
+						?>
+					</tbody>    
+				</table>
+			</div>
 			<?php
 			require 'html-magazyn.php';
 			?>
-		</div>	
+		</div>
+		</div>
 	</div>
 	<div class="footer">
 	</div>

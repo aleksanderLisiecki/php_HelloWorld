@@ -217,29 +217,45 @@ tr:nth-child(even){
 * === SET FORM ===
 */
 
-#kit-form legend {
+.kit-form legend {
     padding-bottom: 10px;
 }
-#kit-form label {
+.kit-form label {
     font-weight: bold;
 } 
-#kit-form div {
+.kit-form div {
     padding: 5px;
-    display: flex;
-    justify-content: center;
     border-bottom: 1px solid;
 }
-
 .kit-form-class{
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: 35% 35% ;
     justify-items: stretch;
 }
 .kit-form-add-button{
     margin:10px;
     padding:5px;
     width: 80px;
-    margin-left: auto;
-    margin-right: auto;
     grid-column: 2;
+}
+
+/*
+* === INVENTORY PANEL ===
+*/
+
+.inventory-panel{
+    display: grid;
+    gap: inherit;
+    grid-template-columns: repeat(4, auto);
+    grid-column: 2/4;
+}
+.inventory-panel div{
+    background-color: var(--primary-color);
+    padding: 10px;
+    height: fit-content;
+}
+.kits-inventory{
+    margin-bottom: 15px;
+    grid-column: 1/5;
+    justify-self: start;
 }

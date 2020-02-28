@@ -33,7 +33,7 @@ exit();
 <head>
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-	<title> Magazyn Pinio.io </title>
+	<title> Magazyn Pinio.io - Login </title>
 	
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	
