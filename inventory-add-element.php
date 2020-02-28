@@ -21,8 +21,8 @@
 	}
 	
 	$db = require_once 'database.php';
-	$invParts = $invPartsQuery->fetchAll();
 	$invPartsQuery = $db->query('SELECT * FROM inventory');
+	$invParts = $invPartsQuery->fetchAll();
 ?>
 
 <!DOCTYPE HTML>
@@ -31,7 +31,7 @@
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 	<link rel="stylesheet" type="text/css" href="css/style.css">
-	<title> Magazyn Pinio.io </title>
+	<title>Dodaj element</title>
 </head>
 
 <body>

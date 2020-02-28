@@ -26,7 +26,7 @@
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 	<link rel="stylesheet" type="text/css" href="css/style.css">
-	<title> Magazyn Pinio.io </title>
+	<title>Panel główny</title>
 </head>
 <body>
 
@@ -51,7 +51,7 @@
 			<button onclick="window.location.href = 'inventory-add-pinio.php';"> Dodaj PINIO </button>
 		</div>
 		<div class="main-content">
-			<legend>Dostępne zestawy:</legend>
+			<legend>Dostępne zestawy</legend>
 
 			<table>
 				<thead>
