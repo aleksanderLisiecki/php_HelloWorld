@@ -52,17 +52,26 @@
 		</div>
 		<div class="main-content">
 			<legend>Dostępne zestawy:</legend>
-			<?php
-			foreach($sets as $set){
-				echo "<div>E100 {$set['e100']}, PINIO {$set['pinio']}, maskownice: wewn.:{$set['mask_in']}, zewn.:{$set['mask_out']}, trzpień: {$set['trzpien']}";
-				if($set['pad']){
-					echo ", podkładki 2szt.</div>";
-				}
-				else{
-					echo ".</div>";
-				}
-			}
-			?>
+
+			<table>
+				<thead>
+				<tr><th>ID</th> <th>E100</th> <th>PINIO</th> <th>Mask.(IN/OUT)</th> <th>Trzpień</th> <th>Podkładki</th> </tr>
+				</thead>
+				<tbody>
+					<?php
+					foreach($sets as $set){
+						echo "<tr><td>{$set['id']}</td> <td>{$set['e100']}</td> <td>{$set['pinio']}</td><td>{$set['mask_in']}/{$set['mask_out']}</td><td>{$set['trzpien']}</td>";
+						if($set['pad']){
+							echo "<td>2szt</td></tr>";
+						}
+						else{
+							echo "<td>brak</td></tr>";
+						}
+					}
+					?>
+				</tbody>    
+			</table>
+			
 		</div>
 		<div class="right-bar">
 			<?php
